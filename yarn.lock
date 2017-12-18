@@ -60,6 +60,16 @@
     component-type "^1.2.1"
     join-component "^1.1.0"
 
+"@types/react-native@^0.51.3":
+  version "0.51.3"
+  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.51.3.tgz#73aae1b9b2618ead387ede3a80a17980b0e0d1f0"
+  dependencies:
+    "@types/react" "*"
+
+"@types/react@*", "@types/react@^16.0.31":
+  version "16.0.31"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.0.31.tgz#5285da62f3ac62b797f6d0729a1d6181f3180c3e"
+
 Base64@~0.1.3:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/Base64/-/Base64-0.1.4.tgz#e9f6c6bef567fd635ea4162ab14dd329e74aa6de"
