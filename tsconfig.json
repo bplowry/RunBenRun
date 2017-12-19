@@ -6,6 +6,7 @@
     "noEmit": true,
     "importHelpers": true,
     "strict": true,
+    "noImplicitAny": false,
     "moduleResolution": "node",
     "experimentalDecorators": true,
   },

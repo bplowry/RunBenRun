@@ -1,19 +1,39 @@
 import * as React from 'react';
-import { Platform, Text } from 'react-native';
+import { Platform, View } from 'react-native';
+import { BodyText, HeaderText } from './Components/TextComponents';
 
-export class Main extends React.Component<{
+export class Main extends React.Component {
+    private get aOrAn() {
+        return Platform.select({
+            android: 'an ',
+            ios: 'an ',
+            default: 'a ',
+        });
+    }
 
-}> {
-    public render() {
+    private get osName(): string {
+        return Platform.select({
+            android: 'Android',
+            ios: 'iOS',
+            macos: 'macOS',
+            windows: 'Windows',
+            default: Platform.OS,
+        });
+    }
+
+    render() {
         const p = Platform.OS;
-        return <Text>
-            { 'This is a' }
-            { p === 'ios' ? 'n iOS'
-            : p === 'android' ? 'n Android'
-            : p === 'macos' ? 'macOS'
-            : p === 'windows' ? 'Windows'
-            : p }
-            { ' app' }
-        </Text>;
+        return (
+            <View>
+                <BodyText>
+                    { 'This is ' + this.aOrAn }
+                    <HeaderText>
+                        { this.osName }
+                    </HeaderText>
+                    { ' app' }
+                </BodyText>
+                <Button onPress={this.props.navigation.goBack} title='Back' accessibilityLabel='Back' />
+            </View>
+        );
     }
 }
