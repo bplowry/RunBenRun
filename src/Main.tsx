@@ -4,7 +4,7 @@ import { Platform, Text } from 'react-native';
 export class Main extends React.Component<{
 
 }> {
-    render() {
+    public render() {
         const p = Platform.OS;
         return <Text>
             { 'This is a' }
