@@ -17,11 +17,12 @@ export const HeaderText = (props: { children: React.ReactNode }) => (
 
 const styles = StyleSheet.create({
     body: {
-        color: 'red',
-        fontSize: 32,
+        color: 'black',
+        fontSize: 16,
     },
     header: { // will be merged with styles.body
         color: 'black',
+        fontSize: 32,
         fontWeight: 'bold',
     },
 });
