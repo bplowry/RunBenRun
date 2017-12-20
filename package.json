@@ -5,6 +5,7 @@
   "devDependencies": {
     "@types/react": "^16.0.31",
     "@types/react-native": "^0.51.3",
+    "@types/react-navigation": "^1.0.26",
     "jest-expo": "23.0.0",
     "react-native-scripts": "1.8.1",
     "react-native-typescript-transformer": "^1.1.4",
@@ -27,6 +28,7 @@
     "expo": "^23.0.4",
     "react": "16.0.0",
     "react-native": "0.50.3",
+    "react-navigation": "^1.0.0-beta.22",
     "tslib": "^1.8.1"
   }
 }

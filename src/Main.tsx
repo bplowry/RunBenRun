@@ -1,8 +1,24 @@
 import * as React from 'react';
-import { Platform, View } from 'react-native';
+import { Platform, View, Button } from 'react-native';
 import { BodyText, HeaderText } from './Components/TextComponents';
+import { StackNavigator, NavigationScreenProp } from 'react-navigation';
 
-export class Main extends React.Component {
+export const Main = () => <Navigator />;
+
+const Home = (props: {
+    navigation: NavigationScreenProp<{}, {}>;
+}) => {
+        return (
+            <View style={{flex: 1, backgroundColor: 'blue'}}>
+                <HeaderText>HOME</HeaderText>
+                <Button onPress={() => props.navigation.navigate('About')} title='About' accessibilityLabel='About' />
+            </View>
+        );
+};
+
+class About extends React.Component<{
+    navigation: NavigationScreenProp<{}, {}>;
+}> {
     private get aOrAn() {
         return Platform.select({
             android: 'an ',
@@ -24,16 +40,21 @@ export class Main extends React.Component {
     render() {
         const p = Platform.OS;
         return (
-            <View>
+            <View style={{flex: 1, backgroundColor: 'yellow'}}>
                 <BodyText>
-                    { 'This is ' + this.aOrAn }
+                    { 'This is SPARTA ' + this.aOrAn }
                     <HeaderText>
                         { this.osName }
                     </HeaderText>
                     { ' app' }
                 </BodyText>
-                <Button onPress={this.props.navigation.goBack} title='Back' accessibilityLabel='Back' />
+                <Button onPress={() => this.props.navigation.goBack()} title='Back' accessibilityLabel='Back' />
             </View>
         );
     }
 }
+
+export const Navigator = StackNavigator({
+    Home: {screen: Home},
+    About: {screen: About},
+});

@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
         fontSize: 32,
     },
     header: { // will be merged with styles.body
-        color: 'blue',
+        color: 'black',
         fontWeight: 'bold',
     },
 });
