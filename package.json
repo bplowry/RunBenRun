@@ -3,13 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "@types/jest": "^21.1.8",
     "@types/react": "^16.0.31",
     "@types/react-native": "^0.51.3",
     "@types/react-navigation": "^1.0.26",
+    "@types/react-test-renderer": "^16.0.0",
     "jest-expo": "23.0.0",
     "react-native-scripts": "1.8.1",
     "react-native-typescript-transformer": "^1.1.4",
     "react-test-renderer": "16.0.0",
+    "ts-jest": "^22.0.0",
     "tslint": "^5.8.0",
     "typescript": "^2.6.2"
   },
@@ -19,10 +22,22 @@
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
-    "test": "node node_modules/jest/bin/jest.js --watch"
+    "test": "node node_modules/jest/bin/jest.js"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "transform": {
+      "^.+\\.jsx?$": "./node_modules/babel-jest",
+      "^.+\\.tsx?$": "./node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ]
   },
   "dependencies": {
     "expo": "^23.0.4",
