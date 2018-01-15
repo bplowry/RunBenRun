@@ -12,6 +12,7 @@ export const Home = (props: {
                 <Button onPress={() => props.navigation.navigate('About')} title='About' accessibilityLabel='About' />
                 <Button onPress={() => props.navigation.navigate('Jokes')} title='Jokes' accessibilityLabel='Jokes' />
                 <Button onPress={() => props.navigation.navigate('Todo')} title='Todo' accessibilityLabel='Todo' />
+                <Button onPress={() => props.navigation.navigate('Camera')} title='Camera' accessibilityLabel='Camera' />
             </View>
         );
 };

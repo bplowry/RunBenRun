@@ -6,6 +6,7 @@ import { Home } from './Home';
 import { About } from './About';
 import { Jokes } from './Jokes';
 import { Todo } from './Todo';
+import { Camera } from './Camera';
 
 export const Main = () => <Navigator />;
 
@@ -14,4 +15,5 @@ const Navigator = StackNavigator({
     About: {screen: About},
     Jokes: {screen: Jokes},
     Todo: {screen: Todo},
+    Camera: {screen: Camera},
 });

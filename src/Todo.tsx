@@ -2,6 +2,7 @@ import * as React from 'react';
 import { FlatList, View, Button, TextInput } from 'react-native';
 import { BodyText } from './Components/TextComponents';
 import { DateInput } from './Components/DateInput';
+import { RbrTextInput } from './Components/TextInput';
 
 interface ITodoItem {
     text: string;
@@ -65,7 +66,7 @@ export class Todo extends React.Component <{
     render() {
         return (
             <View style={{flex: 1}}>
-                <TextInput placeholder='Task' value={this.state.newText} onChangeText={newText => this.setState({newText})} />
+                <RbrTextInput placeholder='Task' value={this.state.newText} onChangeText={newText => this.setState({newText})} />
                 <DateInput placeholder='Due date' dateValue={this.state.newBy} onDateChange={newBy => this.setState({newBy})} />
                 <Button title='Add TODO' accessibilityLabel='Add TODO' onPress={this.onAdd} disabled={!this.validInput} />
                 <FlatList
@@ -90,7 +91,10 @@ class TodoRow extends React.Component<{
         return (
         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
             <BodyText>{this.props.item.text}</BodyText>
-            <Button title='Delete' accessibilityLabel='Delete' onPress={this.onDelete} />
+            <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-end'}}>
+                <BodyText>{this.props.item.by.toISOString().substr(0, 10)}</BodyText>
+                <Button title='Delete' accessibilityLabel='Delete' onPress={this.onDelete} />
+            </View>
         </View>
         );
     }

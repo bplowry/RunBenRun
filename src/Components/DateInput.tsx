@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { TextInput, TextInputProperties, DatePickerIOS, DatePickerAndroid, Platform } from 'react-native';
+import { DatePickerIOS, DatePickerAndroid, Platform } from 'react-native';
+import { RbrTextInput } from './TextInput';
 
 interface IDateInputProps {
     placeholder?: string;
@@ -30,7 +31,7 @@ class DateInputAgnostic extends React.Component<IDateInputProps> {
     }
 
     render() {
-        return <TextInput {...this.props} value={this.textValue} onChangeText={this.onChangeText} />;
+        return <RbrTextInput {...this.props} value={this.textValue} onChangeText={this.onChangeText} />;
     }
 }
 
@@ -63,7 +64,7 @@ class DateInputAndroid extends React.Component<IDateInputProps> {
 
     render() {
         return (
-            <TextInput onFocus={this.onFocus} value={this.inputValue} blurOnSubmit />
+            <RbrTextInput onFocus={this.onFocus} value={this.inputValue} blurOnSubmit />
         );
     }
 }
