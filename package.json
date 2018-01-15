@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "@types/expo": "^24.0.2",
     "@types/jest": "^21.1.8",
     "@types/react": "^16.0.31",
     "@types/react-native": "^0.51.3",
