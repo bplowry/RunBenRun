@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as Expo from 'expo';
 
-import { View, Button, Image, Alert, ScrollView, PermissionsAndroid, CameraRoll, GetPhotosReturnType } from 'react-native';
+import { View, Button, Image, Alert, ScrollView, PermissionsAndroid, CameraRoll, GetPhotosReturnType, Dimensions } from 'react-native';
 import { HttpExecutor } from './Shared/HttpExecutor';
 import { BodyText } from './Components/TextComponents';
 import { Progress } from './Components/Progress';
@@ -40,14 +40,15 @@ export class Camera extends React.Component<{
 
     render() {
         const img = this.state.image;
+        const { height, width } = Dimensions.get('window');
         return (
             <View>
                 <Button title='Take photo' onPress={() => this.takePicture()} />
                 <Button title='Select image' onPress={() => this.getPhoto()} />
                 { img && <Image
                     style={{
-                        height: 200,
-                        width:  300,
+                        height: width / img.width * img.height,
+                        width,
                     }}
                     source={{ uri:  img.uri }}
                 />}
