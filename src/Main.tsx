@@ -7,6 +7,7 @@ import { About } from './About';
 import { Jokes } from './Jokes';
 import { Todo } from './Todo';
 import { Camera } from './Camera';
+import { MyFinger } from './MyFinger';
 
 export const Main = () => <Navigator />;
 
@@ -16,4 +17,5 @@ const Navigator = StackNavigator({
     Jokes: {screen: Jokes},
     Todo: {screen: Todo},
     Camera: {screen: Camera},
+    Fingerprint: {screen: MyFinger},
 });
