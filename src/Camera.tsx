@@ -11,6 +11,10 @@ export class Camera extends React.Component<{
 }, {
     image: { height: number, width: number, uri: string; } | null;
 }> {
+    static navigationOptions = {
+        title: 'Camera',
+    };
+
     constructor(props) {
         super(props);
 
