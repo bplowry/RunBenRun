@@ -14,19 +14,45 @@ function toQueryString(params) {
 }
 
 export default class App extends Component<{}> {
-  async onPress() {
-    const fingerprint = await Fingerprint.authenticateAsync();
-    if (fingerprint.success) {
-      const redirectUrl = AuthSession.getRedirectUri();
-      const returnUrl = AuthSession.getDefaultReturnUrl();
-      const auth = await AuthSession.startAsync({
-        authUrl: '<my auth url>' + toQueryString({
-          redirect_uri: redirectUrl,
-        }),
-      });
-    } else {
-
+  async doFingerprintAuthentication(): Promise<boolean> {
+    const hardware = await Fingerprint.hasHardwareAsync();
+    if (!hardware) {
+      return false;
     }
+
+    const enrolled = await Fingerprint.isEnrolledAsync();
+    if (!enrolled) {
+      return false;
+    }
+
+    const fingerprint = await Fingerprint.authenticateAsync();
+    if (!fingerprint.success) {
+      console.warn(fingerprint.error);
+      return false;
+    }
+
+    return true;
+  }
+
+  async doAuth0Authentication() {
+    const redirectUrl = AuthSession.getRedirectUri();
+    const auth = await AuthSession.startAsync({
+      authUrl: '<my auth url>' + toQueryString({
+        redirect_uri: redirectUrl,
+      }),
+    });
+
+    if (auth.type === 'success') {
+      console.log('success', auth);
+    } else {
+      console.log('unsuccessful', auth);
+    }
+  }
+
+
+  async onPress() {
+    if (await this.doFingerprintAuthentication() || await this.doAuth0Authentication());
+    
 
   }
 
