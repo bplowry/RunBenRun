@@ -1,0 +1,6 @@
+{
+    "flow.useNPMPackagedFlow": true,
+    "javascript.validate.enable": false,
+    "typescript.disableAutomaticTypeAcquisition": true,
+    // "typescript.autoImportSuggestions.enabled": false,
+}

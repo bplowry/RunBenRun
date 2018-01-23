@@ -1,8 +1,39 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+// @flow
+import React, { Component } from 'react';
+import { Platform, StyleSheet, Text, View } from 'react-native';
+import { AuthSession, Fingerprint } from 'expo';
 
-export default class App extends React.Component {
+function add(first: number, second: number) {
+  return first + second;
+}
+
+function toQueryString(params) {
+  return '?' + Object.entries(params)
+    .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`)
+    .join('&');
+}
+
+export default class App extends Component<{}> {
+  async onPress() {
+    const fingerprint = await Fingerprint.authenticateAsync();
+    if (fingerprint.success) {
+      const redirectUrl = AuthSession.getRedirectUri();
+      const returnUrl = AuthSession.getDefaultReturnUrl();
+      const auth = await AuthSession.startAsync({
+        authUrl: '<my auth url>' + toQueryString({
+          redirect_uri: redirectUrl,
+        }),
+      });
+    } else {
+
+    }
+
+  }
+
   render() {
+    const b = add(1, 2);
+    const p = Platform.OS;
+    
     return (
       <View style={styles.container}>
         <Text>Open up App.js to start working on your app!</Text>
